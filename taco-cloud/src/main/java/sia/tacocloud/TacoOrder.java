@@ -1,15 +1,30 @@
 package sia.tacocloud;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.CreditCardNumber;
-import java.util.List;
-import java.util.ArrayList;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Data;
 
 @Data
-public class TacoOrder {
+@Document
+public class TacoOrder implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    private String id;
+
+    private Date placedAt = new Date();
 
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
@@ -40,4 +55,5 @@ public class TacoOrder {
     public void addTaco(Taco taco) {
         this.tacos.add(taco);
     }
+
 }
