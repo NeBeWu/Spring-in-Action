@@ -93,9 +93,6 @@ public class DesignAndOrderTacosBrowserTest {
         doLogout();
     }
 
-    //
-    // Browser test action methods
-    //
     private void buildAndSubmitATaco(String name, String... ingredients) {
         assertDesignPageElements();
 
@@ -189,7 +186,6 @@ public class DesignAndOrderTacosBrowserTest {
 
     private void submitEmptyOrderForm() {
         assertThat(browser.getCurrentUrl()).isEqualTo(currentOrderDetailsPageUrl());
-        // clear fields automatically populated from user profile
         fillField("input#deliveryName", "");
         fillField("input#deliveryStreet", "");
         fillField("input#deliveryCity", "");
@@ -270,9 +266,6 @@ public class DesignAndOrderTacosBrowserTest {
         browser.findElementByCssSelector("a[id='another']").click();
     }
 
-    //
-    // URL helper methods
-    //
     private String loginPageUrl() {
         return homePageUrl() + "login";
     }

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import lombok.extern.slf4j.Slf4j;
 import sia.tacocloud.Ingredient;
 import sia.tacocloud.Ingredient.Type;
 import sia.tacocloud.TacoOrder;
@@ -30,7 +29,6 @@ import sia.tacocloud.data.UserRepository;
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("order")
-@Slf4j
 public class DesignTacoController {
 
     private final IngredientRepository ingredientRepo;
@@ -87,8 +85,6 @@ public class DesignTacoController {
     public String processTaco(
             @Valid Taco taco, Errors errors,
             @ModelAttribute TacoOrder order) {
-
-        log.info("   --- Saving taco");
 
         if (errors.hasErrors()) {
             return "design";
